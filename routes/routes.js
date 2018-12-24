@@ -9,6 +9,7 @@ module.exports = function (app) {
     });
     app.get("/api/all", function(req,res) {
         db.Article.find({})
+        .populate("notes")
         .then(function(articles) {
           // If all Users are successfully found, send them back to the client
           res.render("saved",{title: "Saved Articles", articles:articles})
@@ -52,6 +53,21 @@ module.exports = function (app) {
         .catch(function(err) {
           // If an error occurred, log it
           console.log(err);
+        });
+    });
+    app.post("/api/note/:id", function (req,res) {
+        const id = req.params.id;
+        db.Note.create({text: req.body.text})
+        .then(function(dbNote) {
+          return db.Article.findOneAndUpdate(id, { $push: { notes: dbNote._id } }, { new: true });
+        })
+        .then(function(dbUser) {
+          // If the User was updated successfully, send it back to the client
+          res.json(dbUser);
+        })
+        .catch(function(err) {
+          // If an error occurs, send it back to the client
+          res.json(err);
         });
     });
     app.delete("/api/article/:id", function(req,res) {

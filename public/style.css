@@ -23,6 +23,22 @@ body {
 .btn-outline-secondary {
     background-color: white;
 }
+.notes {
+    height: 120px;
+    border: 1px solid #6C757D;
+    border-radius: 5px;
+    overflow: scroll;
+}
+.notes p {
+    margin-bottom: 0px;
+}
+.note-section {
+    background-color: white;
+}
+.del-note {
+    background-color: white;
+    color: red;
+}
 .footer {
 
     width: 100%;

@@ -8,6 +8,16 @@ $(document).ready(function() {
                 console.log(response);
             }
         });
+    });
+    $(".noteAdd").on("submit", function() {
+        $.ajax({
+            url: `/api/note/${$(this).attr("data-article")}`,
+            type: "POST",
+            data: {text: $("input[name=addNote]").val().trim()},
+            success: function(response){
+                console.log(response);
+            }
+        });
     })
     $(".delete").on("click", function() {
         $.ajax({
