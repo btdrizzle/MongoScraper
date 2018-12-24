@@ -10,10 +10,11 @@ $(document).ready(function() {
         });
     });
     $(".noteAdd").on("submit", function() {
+        const url = $(this).attr("data-article");
         $.ajax({
-            url: `/api/note/${$(this).attr("data-article")}`,
+            url: `/api/note/${url}`,
             type: "POST",
-            data: {text: $("input[name=addNote]").val().trim()},
+            data: {text: $(this).find("input[name=addNote]").val().trim()},
             success: function(response){
                 console.log(response);
             }

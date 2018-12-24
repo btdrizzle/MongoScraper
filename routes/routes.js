@@ -59,11 +59,11 @@ module.exports = function (app) {
         const id = req.params.id;
         db.Note.create({text: req.body.text})
         .then(function(dbNote) {
-          return db.Article.findOneAndUpdate(id, { $push: { notes: dbNote._id } }, { new: true });
+            return db.Article.findOneAndUpdate({_id:id}, { $push: { notes: dbNote._id } }, { new: true });
         })
-        .then(function(dbUser) {
+        .then(function(note) {
           // If the User was updated successfully, send it back to the client
-          res.json(dbUser);
+          res.json(note);
         })
         .catch(function(err) {
           // If an error occurs, send it back to the client

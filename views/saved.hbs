@@ -15,13 +15,11 @@
                     {{/each}}
                 </div>
                 <br>
-                <form class="noteAdd" name="note" data-article={{article._id}}>
-                    <div class="form-group">
+                <form class="noteAdd" data-article={{article._id}}>
                         <label for="addNote">Add a note about this article:</label>
                         <input name="addNote" type="text" class="form-control" placeholder="Type Note Text">
                         <br>
                         <button type="submit" data-article={{article._id}} class="btn btn-secondary">Submit</button>
-                    </div>
                 </form>
             </div>
 
