@@ -18,7 +18,9 @@ $(document).ready(function() {
             success: function(response){
                 console.log(response);
             }
-        });
+        }).then(_ => {
+            location.reload();
+        })
     })
     $(".delete").on("click", function() {
         $.ajax({
