@@ -1,5 +1,5 @@
 const express = require("express");
-const logger = reguire("morgan");
+const logger = require("morgan");
 const mongoose = require("mongoose");
 
 require("handlebars");
@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 8080;
 const app = express();
 
 app.use(logger("dev"));
-app.use(expres.urlencoded({extended:true}));
+app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 
 app.use(express.static("public"));
