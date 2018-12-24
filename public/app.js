@@ -30,6 +30,18 @@ $(document).ready(function() {
         }).then(function() {
             location.reload();
         })
+    });
+    $(".del-note").on("click", function() {
+        $.ajax({
+            url: `/api/note/${$(this).attr("data-id")}`,
+            type: "DELETE",
+            data: {id: $(this).attr("data-id")},
+            success: function(response){
+                console.log(response);
+            }
+        }).then(function() {
+            location.reload();
+        })
     })
 }) 
 

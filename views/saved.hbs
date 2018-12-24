@@ -11,7 +11,7 @@
                 <h3>Notes about this article:</h3>
                 <div class="notes">
                     {{#each notes as |note|}}
-                    <p data-id={{note._id}}><button type="button" class="btn del-note">X</button> {{note.text}}</p>
+                    <p data-id={{note._id}}><button type="button" data-id={{note._id}} class="btn del-note">X</button> {{note.text}}</p>
                     {{/each}}
                 </div>
                 <br>

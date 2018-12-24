@@ -82,5 +82,18 @@ module.exports = function (app) {
             // If an error occurred, log it
             console.log(err);
           });
+    });
+    app.delete("/api/note/:id", function(req,res) {
+        const id = req.params.id;
+        db.Note.findByIdAndDelete(id)
+        .then(function(dbNote) {
+            // View the added result in the console
+            console.log(dbNote);
+            res.json(dbNote);
+          })
+          .catch(function(err) {
+            // If an error occurred, log it
+            console.log(err);
+          });
     })
 };
