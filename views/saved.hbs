@@ -1,11 +1,12 @@
 <div class="container col-10">
         <h2 class="text-center display-6">Your Saved Articles</h2>
+        <a href="#" id="clearAll" class="mb-4 btn btn-outline-secondary btn-block">Clear All Articles!</a> 
         {{#each articles as |article|}}
         <div class="article container mb-3 pb-3">
             <div class="pt-3 pb-3 mb-3">
                 <button type="button" data-id={{article._id}} class="delete btn btn-large">Delete Article</button>
                 <h4>{{article.title}}</h4>
-                <h6>{{article.link}}</h6>
+                <a href="{{article.link}}" target="_blank">{{article.link}}</a>
             </div>
             <div class="note-section p-3">
                 <h3>Notes about this article:</h3>

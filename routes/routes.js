@@ -1,4 +1,4 @@
-//const db = require("../models");
+
 const axios = require("axios");
 const cheerio = require("cheerio");
 const db = require("../models");
@@ -11,7 +11,7 @@ module.exports = function (app) {
         db.Article.find({})
         .populate("notes")
         .then(function(articles) {
-          // If all Users are successfully found, send them back to the client
+
           res.render("saved",{title: "Saved Articles", articles:articles})
         })
         .catch(function(err) {
@@ -23,10 +23,10 @@ module.exports = function (app) {
     app.get("/api/scrape", function(req,res) {
         const articles = [];
         axios.get("https://www.pcmag.com/news").then(function(response) {
-    // Then, we load that into cheerio and save it to $ for a shorthand selector
+
             var $ = cheerio.load(response.data);
             
-            // Now, we grab every h2 within an article tag, and do the following:
+ 
             $(".article-deck a:first-child").each(function(i, element) {
             // Save an empty result object
             var result = {};
@@ -62,7 +62,7 @@ module.exports = function (app) {
             return db.Article.findOneAndUpdate({_id:id}, { $push: { notes: dbNote._id } }, { new: true });
         })
         .then(function(note) {
-          // If the User was updated successfully, send it back to the client
+
           res.json(note);
         })
         .catch(function(err) {
@@ -90,6 +90,18 @@ module.exports = function (app) {
             // View the added result in the console
             console.log(dbNote);
             res.json(dbNote);
+          })
+          .catch(function(err) {
+            // If an error occurred, log it
+            console.log(err);
+          });
+    });
+    app.delete("/api/clearall", function(req,res) {
+        db.Article.deleteMany()
+        .then(function(dbArticle) {
+            // View the added result in the console
+            console.log(dbArticle);
+            res.json(dbArticle);
           })
           .catch(function(err) {
             // If an error occurred, log it

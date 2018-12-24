@@ -1,4 +1,5 @@
 var mongoose = require("mongoose");
+const Note = require("./Note");
 
 // Save a reference to the Schema constructor
 var Schema = mongoose.Schema;
@@ -25,6 +26,12 @@ var ArticleSchema = new Schema({
     ref: "Note"
   }
   ]
+});
+ArticleSchema.pre('remove', function(next) {
+    // 'this' is the client being removed. Provide callbacks here if you want
+    // to be notified of the calls' result.
+    Note.remove({article_id: this._id}).exec();
+    next();
 });
 
 // This creates our model from the above schema, using mongoose's model method

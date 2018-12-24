@@ -43,6 +43,18 @@ $(document).ready(function() {
         }).then(function() {
             location.reload();
         })
+    });
+    $("#clearAll").on("click", function() {
+        $.ajax({
+            url: "/api/clearall",
+            type: "DELETE",
+            data: "",
+            success: function(response){
+                console.log(response);
+            }
+        }).then(function() {
+            location.reload();
+        })
     })
 }) 
 

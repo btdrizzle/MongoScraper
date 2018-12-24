@@ -20,6 +20,12 @@ body {
 .article h4, .article h6 {
     color: white;
 }
+.article a {
+    color: white;
+}
+.article a:link,.article a:visited {
+    text-decoration: none;
+}
 .btn-outline-secondary {
     background-color: white;
 }
