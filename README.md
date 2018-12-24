@@ -6,7 +6,7 @@ This app scrapes titles and links of news articles from PC Magazine's News websi
 
 This app utilizes MongoDB and is deployed to Heroku.
 
-##Links
+## Links
 
 [Mongo Scraper on Heroku](https://btdrakescraper.herokuapp.com/ "Click to open app on Heroku")
 
