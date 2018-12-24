@@ -26,6 +26,11 @@ body {
 .article a:link,.article a:visited {
     text-decoration: none;
 }
+.save-article:hover {
+    border: 1px solid white;
+    border-radius: 5px;
+
+}
 .btn-outline-secondary {
     background-color: white;
 }
