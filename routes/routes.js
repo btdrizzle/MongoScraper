@@ -72,13 +72,17 @@ module.exports = function (app) {
     });
     app.delete("/api/article/:id", function(req,res) {
         const id = req.params.id;
-        db.Article.findByIdAndDelete(id)
+        db.Article.findByIdAndDelete({_id:id})
         .then(function(dbArticle) {
-            // View the added result in the console
             console.log(dbArticle);
-            res.json(dbArticle);
+            console.log(dbArticle.notes);
+            db.Note.deleteMany({_id:{$in:dbArticle.notes}})
+            .then(function(response) {
+                res.json(response);
+            })
+            
           })
-          .catch(function(err) {
+            .catch(function(err) {
             // If an error occurred, log it
             console.log(err);
           });
